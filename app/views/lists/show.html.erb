@@ -1,0 +1,20 @@
+<h2><%= @list.name %></h2>
+
+<br>
+
+<br>
+<% @list.movies.each do |movie| %>
+<ul>
+  <%= image_tag movie.poster_url, width: "100px" %>
+  <li><%= movie.title %></li>
+  <p><%= movie.overview %></p>
+    <% @bookmarks.each do |bookmark| %>
+      <% if bookmark.movie_id == movie.id %>
+        <%= bookmark.comment %>
+      <% end %>
+    <% end %>
+</ul>
+<% end %>
+<br>
+
+<%= link_to "add a movie", new_bookmark_path %>
